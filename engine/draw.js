@@ -1,20 +1,21 @@
-import {GlobalVariable} from "./variable.js";
+var ctx;
 
-function DisplayCoord(coord)
+function addCanvasEvent(e)
 {
-    var ratio = (GlobalVariable.distance / (GlobalVariable.distance + coord.z));
-    return [Math.round(ratio * coord.x + GlobalConstant.WIDTH / 2), Math.round(ratio * coord.y + GlobalConstant.HEIGHT / 2)];
+    var offscreen = e.data.canvas;
+    ctx = offscreen.getContext("2d");
+    self.removeEventListener("message", addCanvasEvent);
+    self.addEventListener("message",addDrawEvent);
 }
 
-onmessage = function(e)
+function addDrawEvent(e)
 {
-    console.log("Worker activated.");
-    GlobalVariable.ctx.fillStyle = `rgb(${e.data.color[0]}, ${e.data.color[1]} + ,${e.data.color[2]})`;
-    GlobalVariable.ctx.beginPath();
-    GlobalVariable.ctx.moveTo(...DisplayCoord(e.data.pos[0]));
-    GlobalVariable.ctx.lineTo(...DisplayCoord(e.data.pos[1]));
-    GlobalVariable.ctx.lineTo(...DisplayCoord(e.data.pos[2]));
-    GlobalVariable.ctx.fill();
-    console.log("Worker closing....");
-    close();
+    ctx.fillStyle = `rgb(${e.data.color[0]}, ${e.data.color[1]}, ${e.data.color[2]})`;
+    ctx.beginPath();
+    ctx.moveTo(...e.data.pos[0]);
+    ctx.lineTo(...e.data.pos[1]);
+    ctx.lineTo(...e.data.pos[2]);
+    ctx.fill();
 }
+
+self.addEventListener("message",addCanvasEvent);

@@ -44,10 +44,10 @@ class GlobalObject
         this.attribute = new AttributeClass(attribute);
         this.polygon = [];
 
-        for (var element of polygonArray)
+        polygonArray.forEach(element =>
         {
-            this.polygon.push(new PolygonClass(element));
-        };
+            this.polygon.push(new PolygonClass(element));    
+        });
     }
 }
 
