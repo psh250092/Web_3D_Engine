@@ -1,27 +1,13 @@
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Canvas tutorial</title>
-    <script type="text/javascript">
-      function draw(){
-        var canvas = document.getElementById('tutorial');
-        if (canvas.getContext)
-        {
-            var ctx = canvas.getContext('2d');
-            ctx.fillStyle = "rgb(100, 200, 300)";
-            ctx.beginPath();
-            ctx.moveTo(0, 200);
-            ctx.lineTo(0, 0);
-            ctx.lineTo(100, 0);
-            ctx.fill();
-        }
-      }
+    <head>
+    </head>
+    <body>
+        <center><iframe src="./engine.html" frameborder="1" width = "1600", height = "900"></iframe></center>
+    </body>
+    <script type = "module">
+        import {loading} from "./engine/engine.js";
+        import {GlobalVariable} from "./engine/variable.js";
+        loading();
+        alert(GlobalVariable.objectArray[0].polygon[0].pos[0].x);
     </script>
-    <style type="text/css">
-      canvas { border: 1px solid black; }
-    </style>
-  </head>
-  <body onload="draw();">
-    <canvas id="tutorial" width="1000" height="900"></canvas>
-  </body>
 </html>
