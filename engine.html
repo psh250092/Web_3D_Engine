@@ -1,0 +1,18 @@
+<html>
+    <script type="text/javascript">
+        function draw(){
+          var canvas = document.getElementById('tutorial');
+          if (canvas.getContext){
+            var ctx = canvas.getContext('2d');
+          }
+        }
+    </script>
+    <body>
+        this is canvas
+        <canvas id = "3D_Engine" width = "1600" hight = "900"></canvas>
+    </body>
+    <script type = "module">
+        import {init} from "./engine/engine.js";
+        init(document);
+    </script>
+</html>
