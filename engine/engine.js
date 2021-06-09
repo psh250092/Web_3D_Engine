@@ -32,7 +32,6 @@ function update()
         {
             if(!GlobalVariable.pause)
             {
-            physics(GlobalVariable);
             
             worker.postMessage({"pos" : [[-2000,-2000],[-2000,2000],[2000,-2000]], "color" : GlobalConstant.BGCOLOR});
             worker.postMessage({"pos" : [[2000,2000],[-2000,2000],[2000,-2000]], "color" : GlobalConstant.BGCOLOR});
@@ -48,6 +47,7 @@ function update()
                 }
             );
             }
+            physics(GlobalVariable);
         },
         parseInt(Math.floor(1000/GlobalConstant.FRAME * 10))
     );
