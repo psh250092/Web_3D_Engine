@@ -5,4 +5,14 @@ export var GlobalVariable = new class VariableClass
         this.objectArray = [];
         this.distance = undefined;
     }
+
+    getObjectArray(num)
+    {
+        return this.getObjectArray[num];
+    }
+
+    setObjectArray()
+    {
+
+    }
 }
